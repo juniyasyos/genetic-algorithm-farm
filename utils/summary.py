@@ -64,7 +64,7 @@ def penalti_vaksin(V):
 def is_angka_valid(x):
     return isinstance(x, (int, float)) and isfinite(x) and x > 0
 
-def summary(ind):
+def summary(ind, information_optional=False):
     N, F, L, V, T, C = ind
     hasil = ind.extra
 
@@ -105,12 +105,13 @@ def summary(ind):
     print(f"- Jumlah Tenaga Kerja OK : {'✅' if hasil.get('pekerja_ok') else '❌'}")
     print(f"- Biaya Sesuai Budget    : {'✅' if hasil.get('budget_ok') else '❌'}")
 
-    print("\n📌 CATATAN TAMBAHAN")
-    print(f"- Durasi Produksi        : {DAYS} hari ({SICLUS_BULAN} bulan)")
-    print(f"- Harga Pakan per Kg     : Rp {PPAKAN:,}")
-    print(f"- Harga Telur per Kg     : Rp {PTELUR:,}")
-    print(f"- Biaya Vaksin per Ekor  : Rp {BIAYA_VAKSIN:,} x {V} = Rp {BIAYA_VAKSIN*V:,.0f}")
-    print(f"- Gaji Pekerja/Bulan     : Rp {GAJI_TK:,}")
-    print(f"- Biaya Operasional Lain : Rp {BIAYA_LAIN:,}/bulan x {SICLUS_BULAN} = Rp {BIAYA_LAIN*SICLUS_BULAN:,.0f}")
+    if (information_optional):
+        print("\n📌 CATATAN TAMBAHAN")
+        print(f"- Durasi Produksi        : {DAYS} hari ({SICLUS_BULAN} bulan)")
+        print(f"- Harga Pakan per Kg     : Rp {PPAKAN:,}")
+        print(f"- Harga Telur per Kg     : Rp {PTELUR:,}")
+        print(f"- Biaya Vaksin per Ekor  : Rp {BIAYA_VAKSIN:,} x {V} = Rp {BIAYA_VAKSIN*V:,.0f}")
+        print(f"- Gaji Pekerja/Bulan     : Rp {GAJI_TK:,}")
+        print(f"- Biaya Operasional Lain : Rp {BIAYA_LAIN:,}/bulan x {SICLUS_BULAN} = Rp {BIAYA_LAIN*SICLUS_BULAN:,.0f}")
 
     print("="*60)
